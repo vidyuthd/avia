@@ -16,7 +16,7 @@ $gray-700: #495057 !default;
 $gray-800: #343a40 !default;
 $gray-900: #212529 !default;
 $black:    #000 !default;
-
+$gray-101: #faf9f4 !default;
 $grays: () !default;
 $grays: map-merge((
   "100": $gray-100,
@@ -29,7 +29,7 @@ $grays: map-merge((
   "800": $gray-800,
   "900": $gray-900
 ), $grays);
-
+$main-color: #f45800!default;
 $blue:    #2196F3 !default;
 $indigo:  #6610f2 !default;
 $purple:  #9C27B0 !default;
@@ -62,13 +62,13 @@ $colors: map-merge((
   "gray-dark":  $gray-800
 ), $colors);
 
-$primary:       $blue !default;
+$primary:       $main-color !default;
 $secondary:     $gray-600 !default;
 $success:       $green !default;
 $info:          $cyan !default;
 $warning:       $yellow !default;
 $danger:        $red !default;
-$light:         $gray-100 !default;
+$light:         $gray-300 !default;
 $dark:          $gray-800 !default;
 
 $theme-colors: () !default;
