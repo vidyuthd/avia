@@ -15,3 +15,6 @@ config :ex_aws,
   ]
 
 import_config "#{Mix.env()}.exs"
+
+# Import Timber, structured logging
+import_config "timber.exs"

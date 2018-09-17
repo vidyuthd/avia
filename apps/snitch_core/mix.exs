@@ -28,13 +28,13 @@ defmodule Snitch.Core.Mixfile do
   def application do
     [
       mod: {Snitch.Application, []},
-      extra_applications: [:logger, :runtime_tools]
+      extra_applications: [:logger, :runtime_tools, :timber]
     ]
   end
 
   # Specifies which paths to compile per environment.
   defp elixirc_paths(:test), do: ["lib", "test/support", "priv/repo/seed"]
-  defp elixirc_paths(_), do: ["lib", "priv/repo/seed"]
+  defp elixirc_paths(_), do: ["lib", "priv/repo/seed", "priv/tasks"]
 
   # Specifies your project dependencies.
   #
@@ -87,7 +87,8 @@ defmodule Snitch.Core.Mixfile do
       {:plug, "~> 1.0"},
 
       # unique id generator
-      {:nanoid, "~> 1.0.1"}
+      {:nanoid, "~> 1.0.1"},
+      {:timber, "~> 2.7"}
     ]
   end
 

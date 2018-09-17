@@ -43,3 +43,6 @@ config :snitch_api, frontend_checkout_url: System.get_env("FRONTEND_CHECKOUT_URL
 # Import environment specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.
 import_config "#{Mix.env()}.exs"
+
+# Import Timber, structured logging
+import_config "timber.exs"

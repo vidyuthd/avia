@@ -44,6 +44,11 @@ defmodule SnitchApiWeb.Endpoint do
     signing_salt: "39wcx/Xj"
   )
 
+  # Add Timber plugs for capturing HTTP context and events
+  plug(Timber.Integrations.SessionContextPlug)
+  plug(Timber.Integrations.HTTPContextPlug)
+  plug(Timber.Integrations.EventPlug)
+
   plug(ApiWeb.CORS)
   plug(SnitchApiWeb.Router)
 
@@ -55,7 +60,9 @@ defmodule SnitchApiWeb.Endpoint do
   """
   def init(_key, config) do
     if config[:load_from_system_env] do
-      port = System.get_env("PORT") || raise "expected the PORT environment variable to be set"
+      port =
+        System.get_env("API_PORT") || raise "expected the PORT environment variable to be set"
+
       {:ok, Keyword.put(config, :http, [:inet6, port: port])}
     else
       {:ok, config}
