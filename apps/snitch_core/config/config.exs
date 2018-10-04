@@ -7,6 +7,8 @@ config :arc,
   bucket: {:system, "BUCKET_NAME"},
   virtual_host: true
 
+config :snitch_core, frontend_url: System.get_env("FRONTEND_URL")
+
 config :snitch_core, Snitch.Tools.Mailer,
   adapter: Bamboo.SendGridAdapter,
   api_key: System.get_env("SENDGRID_API_KEY"),

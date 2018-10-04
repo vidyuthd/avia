@@ -16,11 +16,11 @@ defmodule Snitch.Tools.OrderEmail do
   EEx.function_from_file(:defp, :order_email, email_template, [:assigns])
 
   def order_confirmation_mail(order) do
+    base_url = Application.get_env(:snitch_core, :frontend_url)
     sender_email = Application.get_env(:snitch_core, Snitch.Tools.Mailer)[:sendgrid_sender_mail]
-    order = Repo.preload(order, [:user, line_items: :product])
-
+    order = Repo.preload(order, [:user, line_items: [product: :images]])
     user_email = order.user.email
-    mail_template = order_email(%{order: order})
+    mail_template = order_email(%{order: order, base_url: base_url})
 
     new_email()
     |> to(user_email)
