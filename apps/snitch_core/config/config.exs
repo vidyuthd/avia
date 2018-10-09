@@ -16,4 +16,8 @@ config :snitch_core, Snitch.Tools.Mailer,
   api_key: System.get_env("SENDGRID_API_KEY"),
   sendgrid_sender_mail: System.get_env("SENDGRID_SENDER_EMAIL")
 
+config :snitch_core, Rummage.Ecto,
+  default_repo: Snitch.Repo,
+  default_per_page: 2
+
 import_config "#{Mix.env()}.exs"
