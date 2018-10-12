@@ -19,6 +19,15 @@ export default class View extends MainView {
       document.getElementById('product-listing-inactive').onclick = function() {
         window.location.replace(this.value);
       };
+
+      $(function(){
+        $('#btn_renew').click(function(){
+          var val = [];
+          $(':checkbox:checked').each(function(i){
+            val[i] = $(this).val();
+          });
+        });
+      });
     }
 
     unmount() {
