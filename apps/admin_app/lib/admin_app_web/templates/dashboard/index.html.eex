@@ -14,5 +14,10 @@
 </form> 
 </div>
 <div>
-    <canvas id="myChart" width="400" height="400"></canvas>
+  <div style="width:45%;float:left;margin-right:5%;">
+    <canvas id="barChart"></canvas>
+    </div>
+    <div style="width:45%;float:left;margin-right:5%;">
+    <canvas id="lineChart"></canvas>
+  </div>
 </div>
