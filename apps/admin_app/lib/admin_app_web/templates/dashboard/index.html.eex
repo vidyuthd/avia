@@ -1,5 +1,17 @@
+<script type="text/javascript">
+     window.barchart = <%= raw(Poison.encode!(@barchart)) %>
+</script>
 <div class="jumbotron">
   <h2>This is dashboard</h2>
+</div>
+<div>
+ <form action="/dashboard">
+  from:
+  <input type="date" name="from">
+  To:
+  <input type="date" name="to">
+  <input type="submit">
+</form> 
 </div>
 <div>
     <canvas id="myChart" width="400" height="400"></canvas>
