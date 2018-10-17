@@ -7,6 +7,8 @@ import ProductEditView from './product/edit';
 import OrderIndexView from './order/index';
 import ZoneNewView from './zone/new';
 import ProductIndexView from './product/index';
+import DashboardIndexView from './dashboard/index';
+
 
 // Collection of specific view modules
 const views = {
@@ -17,7 +19,8 @@ const views = {
   ProductEditView,
   ProductIndexView,
   OrderIndexView,
-  ZoneNewView
+  ZoneNewView,
+  DashboardIndexView
 };
 
 export default function loadView(viewName) {
