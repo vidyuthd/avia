@@ -94,6 +94,8 @@ defmodule AdminAppWeb.Router do
       ProductController,
       :delete_property
     )
+
+    get("/product/import/etsy", ProductImportController, :import_etsy)
   end
 
   scope "/", AdminAppWeb do
