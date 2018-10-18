@@ -96,6 +96,8 @@ defmodule AdminAppWeb.Router do
     )
 
     get("/product/import/etsy", ProductImportController, :import_etsy)
+    get("/product/import/etsy/callback", ProductImportController, :oauth_callback)
+    get("/product/import/etsy/progress", ProductImportController, :import_progress)
   end
 
   scope "/", AdminAppWeb do
