@@ -1,23 +1,86 @@
 <script type="text/javascript">
-     window.barchart = <%= raw(Poison.encode!(@barchart)) %>
+     window.barchart = <%= raw(Poison.encode!(get_order_datapoints())) %>
+     window.linechart = <%= raw(Poison.encode!(get_payment_datapoints())) %>
 </script>
-<div class="jumbotron">
-  <h2>This is dashboard</h2>
-</div>
-<div>
- <form action="/dashboard">
-  from:
-  <input type="date" name="from">
-  To:
-  <input type="date" name="to">
-  <input type="submit">
-</form> 
-</div>
-<div>
-  <div style="width:45%;float:left;margin-right:5%;">
-    <canvas id="barChart"></canvas>
+<div class="list-container">
+  <div class="row m-0 list-header">
+    <div class="col-10 p-0">
+        <h2>Dashboard</h2>
+    </div>
+  </div>
+  <br>
+  <div>
+    <div style="width:45%;float:left;margin-left:5%;">
+      <div class="table-contaner orderlist">
+        <div class="row">
+          <table class="table" style="width: 90%;">
+            <thead style="width: 100%; text-align: left;">
+              <tr>
+                <th scope="col"> State </th>
+                <th scope="col"> Count</th>
+              </tr>
+            </thead>
+            <tbody style="width: 100%;" class="text-capitalize">
+              <%= for order_state_count <- get_order_state_count do %>
+                <tr>
+                  <td>
+                    <%= order_state_count.state %> 
+                  </td>
+                  <td>
+                    <%= order_state_count.count %>
+                  </td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+        </div>
+      </div>
     </div>
     <div style="width:45%;float:left;margin-right:5%;">
-    <canvas id="lineChart"></canvas>
+      <div class="table-contaner orderlist">
+        <div class="row">
+          <table class="table" style="width: 90%;">
+            <thead style="width: 100%; text-align: left;">
+              <tr>
+                <th scope="col"> State </th>
+                <th scope="col"> Count</th>
+              </tr>
+            </thead>
+            <tbody style="width: 100%;" class="text-capitalize">
+              <%= for product_state_count <- get_product_state_count do %>
+                <tr>
+                  <td>
+                    <%= product_state_count.state %> 
+                  </td>
+                  <td>
+                    <%= product_state_count.count %>
+                  </td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+  <br>
+  <br>
+  <div>
+    <form action="/dashboard">
+      from:
+      <input type="date" name="from">
+      To:
+      <input type="date" name="to">
+      <input type="submit">
+    </form> 
+  </div>
+  <br>
+  <div>
+    <div style="width:45%;float:left;margin-right:5%;">
+      <canvas id="barChart"></canvas>
+    </div>
+    <div style="width:45%;float:left;margin-right:5%;">
+      <canvas id="lineChart"></canvas>
+    </div>
   </div>
 </div>

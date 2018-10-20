@@ -306,4 +306,11 @@ defmodule Snitch.Data.Model.Product do
   defp total_count_on_hand(stocks) do
     Enum.reduce(stocks, 0, fn stock, acc -> stock.count_on_hand + acc end)
   end
+
+  def get_product_count_by_state() do
+    Product
+    |> group_by([p], p.state)
+    |> select([p], %{state: p.state, count: count(p.id)})
+    |> Repo.all()
+  end
 end

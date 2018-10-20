@@ -62,4 +62,18 @@ defmodule Snitch.Data.Model.Payment do
   def to_subtype(%Payment{payment_type: "ccd"} = payment) do
     CardPaymentModel.from_payment(payment.id)
   end
+
+  defmacro to_char(field, format) do
+    quote do
+      fragment("to_char(?, ?)", unquote(field), unquote(format))
+    end
+  end
+
+  def get_payment_count_by_date() do
+    Payment
+    |> group_by([p], to_char(p.inserted_at, "dd Mon YYYY"))
+    |> select([p], %{date: to_char(p.inserted_at, "dd Mon YYYY"), count: count(p.id)})
+    |> Repo.all()
+    |> Enum.sort_by(&{Map.get(&1, :date)})
+  end
 end
